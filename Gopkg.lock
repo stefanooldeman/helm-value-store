@@ -146,7 +146,7 @@
 
 [[projects]]
   name = "github.com/skuid/go-middlewares"
-  packages = ["authn/google"]
+  packages = [".","authn/google"]
   revision = "4a5dfe976cd42eebc9e6da954a819f1db66d2b43"
   version = "v0.1.0"
 
@@ -291,6 +291,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "28ab4562399c96b0f15ce830dd866f9dd403b9ef9f29e1c46f9687ab296d7edf"
+  inputs-digest = "bb76ba7a02b0adccaca77f35541a49bfb53ce4a72fa4f1f70b1c2469e65dfff5"
   solver-name = "gps-cdcl"
   solver-version = 1
