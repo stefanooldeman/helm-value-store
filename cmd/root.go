@@ -8,6 +8,7 @@ import (
 
 	"github.com/skuid/helm-value-store/datastore"
 	"github.com/skuid/helm-value-store/dynamo"
+	"github.com/skuid/helm-value-store/internal/zookeeper"
 	"github.com/skuid/helm-value-store/store"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -15,7 +16,7 @@ import (
 
 var releaseStore store.ReleaseStore
 
-var storeTypes = []string{"dynamodb", "datastore"}
+var storeTypes = []string{"dynamodb", "datastore", "zookeeper"}
 
 // RootCmd is the root command
 var RootCmd = &cobra.Command{
@@ -28,6 +29,8 @@ var RootCmd = &cobra.Command{
 			releaseStore, err = dynamo.NewReleaseStore(viper.GetString("dynamodb-table"))
 		case "datastore":
 			releaseStore, err = datastore.NewReleaseStore(viper.GetString("service-account"))
+		case "zookeeper":
+			releaseStore, err = zookeeper.NewReleaseStore(viper.GetString("zookeeper-connection"))
 		default:
 			err = fmt.Errorf("No valid value store specified: %s. Must be one of %v", backend, storeTypes)
 		}
@@ -56,6 +59,7 @@ func init() {
 	// DynamoDB flags
 	RootCmd.PersistentFlags().String("dynamodb-table", "helm-charts", "Name of the dynamodb table")
 	RootCmd.PersistentFlags().String("service-account", "sa.json", "The Google Service Account JSON file")
+	RootCmd.PersistentFlags().String("zookeeper-connection", "localhost:2181", "one or more hosts, for example: zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181")
 	RootCmd.PersistentFlags().Duration("timeout", time.Duration(30)*time.Second, "The timeout for a given command")
 }
 
