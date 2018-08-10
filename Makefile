@@ -37,3 +37,14 @@ docker:
 
 clean:
 	rm ./$(REPO)
+
+## Build steps with docker
+
+.PHONY: docker_image
+build_docker_image:
+	docker build -t helm-values-build:latest .
+
+.PHONY: build_cli
+build_cli:
+	docker run -ti --entrypoint bash -v $(pwd):/root/go/src/github.com/skuid/helm-value-store helm-values-build
+
