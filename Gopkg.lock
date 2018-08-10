@@ -145,6 +145,12 @@
   revision = "a6e9df898b1336106c743392c48ee0b71f5c4efa"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/samuel/go-zookeeper"
+  packages = ["zk"]
+  revision = "c4fab1ac1bec58281ad0667dc3f0907a9476ac47"
+
+[[projects]]
   name = "github.com/skuid/go-middlewares"
   packages = [".","authn/google"]
   revision = "4a5dfe976cd42eebc9e6da954a819f1db66d2b43"
@@ -291,6 +297,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bb76ba7a02b0adccaca77f35541a49bfb53ce4a72fa4f1f70b1c2469e65dfff5"
+  inputs-digest = "08c73bb93609f54ab856b6e7f7e6e7217c016a25ca35d5b3531237ee382ccb8e"
   solver-name = "gps-cdcl"
   solver-version = 1
